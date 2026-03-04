@@ -16,14 +16,14 @@ func NewProductRepository() *ProductRepository  {
 
 	 dsn := "root:12345@tcp(127.0.0.1:3307)/products?charset=utf8mb4&parseTime=True&loc=Local"
 
-	 db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	 database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	 if err != nil {
 		log.Fatalf("Couldn't connect to the database: %v", err)
 	 }
 
-	 db.AutoMigrate(&models.Product{})
-	 return &ProductRepository{db: db}
+	 database.AutoMigrate(&models.Product{})
+	 return &ProductRepository{db: database}
 	
 }
 
